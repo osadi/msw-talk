@@ -16,13 +16,17 @@ const CatPage = () => {
 
 const Cat = ({ cat }: CatProps) => {
   return (
-    <div>
+    <div className="cat">
       <h6>{cat.id}</h6>
-      <ul>
-        {cat.tags.map((tag) => (
-          <li>{tag}</li>
-        ))}
-      </ul>
+      {cat.tags.map((tag) => {
+        const image = `https://cataas.com/cat/${tag}`;
+        return (
+          <figure>
+            <img src={image} />
+            <figcaption>{tag}</figcaption>
+          </figure>
+        );
+      })}
     </div>
   );
 };
