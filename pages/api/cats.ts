@@ -1,6 +1,6 @@
 import { NextApiResponse } from "next";
 
-const API_URL = "https://cataas.com/api/cats";
+export const API_URL = "https://cataas.com/api/cats";
 
 export default async (_, res: NextApiResponse) => {
   const searchParams = new URLSearchParams({
