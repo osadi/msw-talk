@@ -1,8 +1,8 @@
 import { useCats } from "../hooks/useCats";
 
-const CatPage = () => {
+const MoarCatPage = () => {
   const { cats, isLoading, isError } = useCats(
-    "http://localhost:3000/api/cats"
+    "http://localhost:3000/api/moar_cats"
   );
 
   if (isError) {
@@ -12,7 +12,7 @@ const CatPage = () => {
   return (
     <div>
       {isLoading ? (
-        <div>Loading cats...</div>
+        <div>Loading moar cats...</div>
       ) : (
         cats?.map((cat) => <Cat cat={cat} key={cat.id} />)
       )}
@@ -37,7 +37,7 @@ const Cat = ({ cat }: CatProps) => {
   );
 };
 
-export default CatPage;
+export default MoarCatPage;
 
 type CatProps = {
   cat: Cat;

@@ -11,7 +11,7 @@ import { fetch } from "whatwg-fetch";
 global.fetch = fetch;
 
 export const getApiCats = rest.get(
-  "http://localhost/api/cats",
+  "http://localhost:3000/api/cats",
   withHandler(getApiCatHandler)
 );
 
@@ -48,6 +48,10 @@ describe("/pages/index.ts", () => {
 
     expect(screen.getByText("Loading cats...")).toBeInTheDocument();
     expect(await screen.findByText("mockedTag1")).toBeInTheDocument();
+    expect(handlerCalled.mock.calls.flat()).toEqual([
+      "GET: http://localhost:3000/api/cats",
+      "GET: https://cataas.com/api/cats?tags=cute",
+    ]);
   });
 
   it("handles network errors", async () => {
