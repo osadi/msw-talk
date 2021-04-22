@@ -6,7 +6,7 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
  * This handler formats the object to the Next format which
  * enables us to run our actual API handler in unit tests.
  */
-export const handler = (req: MockedRequest, res: ResponseComposition) => {
+const handler = (req: MockedRequest, res: ResponseComposition) => {
   const headers = req.headers.all;
   const result = { status: 500, data: undefined };
   const { searchParams } = req.url;

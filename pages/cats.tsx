@@ -1,20 +1,17 @@
-import { useEffect } from "react";
 import useSwr from "swr";
 
 const CatPage = () => {
-  const { data, error } = useSwr<Cat[]>("http://localhost/api/cats");
+  const { data, error } = useSwr<Cat[]>("http://localhost:3000/api/cats");
 
-  if (error) {
-    return <div>Error</div>;
-  }
-
-  return (
+  return !data && !error ? (
+    <div>Loading cats...</div>
+  ) : error ? (
+    <div>Error fetching cats...</div>
+  ) : (
     <div>
-      {!data ? (
-        <div>Loading cats...</div>
-      ) : (
-        data?.map((cat) => <Cat cat={cat} key={cat.id} />)
-      )}
+      {data?.map((cat) => (
+        <Cat cat={cat} key={cat.id} />
+      ))}
     </div>
   );
 };

@@ -6,12 +6,12 @@ import { setupServer } from "msw/node";
 import { catHandler } from "../mocks/handlers";
 import getApiCatHandler, { API_URL } from "../pages/api/cats";
 import { withHandler } from "../testHelpers";
-import { fetch } from "whatwg-fetch";
 
+import { fetch } from "whatwg-fetch";
 global.fetch = fetch;
 
 export const getApiCats = rest.get(
-  "http://localhost/api/cats",
+  "http://localhost:3000/api/cats",
   withHandler(getApiCatHandler)
 );
 
@@ -52,9 +52,9 @@ describe("/pages/index.ts", () => {
 
   it("handles network errors", async () => {
     server.use(
-      rest.get(API_URL, (req, res, ctx) => {
-        return res.networkError("Failed to connect");
-      })
+      rest.get(API_URL, (req, res, ctx) =>
+        res.networkError("Failed to connect")
+      )
     );
 
     render(
@@ -64,6 +64,8 @@ describe("/pages/index.ts", () => {
     );
 
     expect(screen.getByText("Loading cats...")).toBeInTheDocument();
-    expect(await screen.findByText("Error")).toBeInTheDocument();
+    expect(
+      await screen.findByText("Error fetching cats...")
+    ).toBeInTheDocument();
   });
 });
