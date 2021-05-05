@@ -9,13 +9,15 @@ const CatPage = () => {
     return <div>Error</div>;
   }
 
+  if (isLoading) {
+    return <div>Loading cats...</div>;
+  }
+
   return (
     <div>
-      {isLoading ? (
-        <div>Loading cats...</div>
-      ) : (
-        cats?.map((cat) => <Cat cat={cat} key={cat.id} />)
-      )}
+      {cats?.map((cat) => (
+        <Cat cat={cat} key={cat.id} />
+      ))}
     </div>
   );
 };
