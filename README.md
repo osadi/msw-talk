@@ -1,16 +1,5 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Demo
-
-1. Starta appen och visa den fina kattsidan.
-2. Gå igenom och förklara Cats.tsx.
-3. Gå igenom och förklara testerna med MSW.
-4. Visa det "traditionella testandet" med mockad hook (moar_cats)
-5. Jämför coverage
-6. Ett fel i moar cats (tag istället för tags).
-7. Visa på fångat fel mha MSW (ändra query param från cute)
-8. Visa offline
-
 ## Getting Started
 
 First, run the development server:
