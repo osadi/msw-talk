@@ -32,7 +32,7 @@ describe("/pages/index.ts", () => {
       </SWRConfig>
     );
 
-    expect(screen.getByText("Loading moar cats...")).toBeInTheDocument();
+    expect(screen.getByText("Loading cats...")).toBeInTheDocument();
 
     mockedUseCats.useCats.mockImplementationOnce(() => {
       return {
