@@ -6,16 +6,13 @@ import { setupServer } from "msw/node";
 import { catHandler } from "../mocks/handlers";
 import getApiCatHandler, { API_URL } from "../pages/api/cats";
 import { withHandler } from "../testHelpers";
-import { fetch } from "whatwg-fetch";
 
-global.fetch = fetch;
-
-export const getApiCats = rest.get(
+export const getApiCatsHandler = rest.get(
   "http://localhost:3000/api/cats",
   withHandler(getApiCatHandler)
 );
 
-const server = setupServer(catHandler, getApiCats);
+const server = setupServer(catHandler, getApiCatsHandler);
 const handlerCalled = jest.fn();
 
 beforeAll(() => {
@@ -39,7 +36,7 @@ afterAll(() => {
 });
 
 describe("/pages/index.ts", () => {
-  it("renders mocked cats", async () => {
+  it("should fetch and show cats", async () => {
     render(
       <SWRConfig value={{ dedupingInterval: 0 }}>
         <Cats />
@@ -47,14 +44,15 @@ describe("/pages/index.ts", () => {
     );
 
     expect(screen.getByText("Loading cats...")).toBeInTheDocument();
-    expect(await screen.findByText("mockedTag1")).toBeInTheDocument();
+    expect(await screen.findByText("catId")).toBeInTheDocument();
+    expect(screen.getByText("mockedTag1")).toBeInTheDocument();
     expect(handlerCalled.mock.calls.flat()).toEqual([
       "GET: http://localhost:3000/api/cats",
       "GET: https://cataas.com/api/cats?tags=cute",
     ]);
   });
 
-  it("handles network errors", async () => {
+  it("should handle network errors", async () => {
     server.use(
       rest.get(API_URL, (req, res, ctx) => {
         return res.networkError("Failed to connect");

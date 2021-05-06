@@ -22,22 +22,20 @@ const CatPage = () => {
   );
 };
 
-const Cat = ({ cat }: CatProps) => {
-  return (
-    <div className="cat">
-      <h6>{cat.id}</h6>
-      {cat.tags.map((tag) => {
-        const image = `https://cataas.com/cat/${tag}`;
-        return (
-          <figure key={tag}>
-            <img src={image} />
-            <figcaption>{tag}</figcaption>
-          </figure>
-        );
-      })}
-    </div>
-  );
-};
+const Cat = ({ cat }: CatProps) => (
+  <div className="cat">
+    <h6>{cat.id}</h6>
+    {cat.tags.map((tag) => {
+      const image = `https://cataas.com/cat/${tag}`;
+      return (
+        <figure key={tag}>
+          <img src={image} />
+          <figcaption>{tag}</figcaption>
+        </figure>
+      );
+    })}
+  </div>
+);
 
 export default CatPage;
 
