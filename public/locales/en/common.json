@@ -1,0 +1,6 @@
+{
+  "first": { "second": "second level" },
+  "alreadyHasAnAccount": "Har du redan ett konto? <showLogin>Logga in</showLogin> genom att skriva i din info",
+  "contactCustomerService": "<h1>Prenumerationen</h1> ingår redan i din produkt. <paragraph>Kontakta <a href=\"https://www.gp.se\" target=\"_blank\">linkTEXT</a> eller gå till <a href=\"/cats\" text=\"kattsidan\" /></paragraph>",
+  "linkToCustomerService": "www.aftonbladet.se"
+}
