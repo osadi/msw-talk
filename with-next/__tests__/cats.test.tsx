@@ -48,7 +48,7 @@ describe("/pages/index.ts", () => {
     expect(screen.getByText("mockedTag1")).toBeInTheDocument();
     expect(handlerCalled.mock.calls.flat()).toEqual([
       "GET: http://localhost:3000/api/cats",
-      "GET: https://cataas.com/api/cats?tags=cute",
+      "GET: https://cataas.com/api/cats?tags=cute"
     ]);
   });
 
