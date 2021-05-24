@@ -1,4 +1,4 @@
-import { rest } from "msw";
+import { graphql, rest } from "msw";
 import { API_URL, IMAGE_URL } from "../config";
 /* eslint-disable-next-line */
 import base64Image from "!url-loader!./nyancat.png";
@@ -31,4 +31,37 @@ export const catImgHandler = rest.get(
   }
 );
 
-export const handlers = [catImgHandler, catHandler];
+const github = graphql.link("https://api.github.com/graphql");
+
+export const ghUserGQL = github.query("User", (req, res, ctx) => {
+  return res(
+    ctx.data({
+      user: {
+        bio: "",
+        company: "@gittub",
+        name: "The Mocktocat",
+        repositories: {
+          nodes: [
+            {
+              name: "Hello-World"
+            },
+            {
+              name: "Spoon-Knife"
+            },
+            {
+              name: "download"
+            },
+            {
+              name: "decompress"
+            },
+            {
+              name: "bin-wrapper"
+            }
+          ]
+        }
+      }
+    })
+  );
+});
+
+export const handlers = [catImgHandler, catHandler, ghUserGQL];

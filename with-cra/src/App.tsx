@@ -1,5 +1,6 @@
 import React from "react";
 import CatPage from "./components/Cat";
+import { OctoCat } from "./components/OctoCat";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <h1>Cats</h1>
       </header>
       <main>
+        <OctoCat />
         <CatPage />
       </main>
     </>

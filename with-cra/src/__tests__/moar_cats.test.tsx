@@ -16,7 +16,7 @@ afterEach(() => {
 
 afterAll(() => {});
 
-describe("/pages/index.ts", () => {
+describe("Cats", () => {
   it("renders moar cats", async () => {
     mockedUseCats.useCats.mockImplementationOnce(() => {
       return {

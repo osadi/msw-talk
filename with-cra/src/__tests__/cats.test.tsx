@@ -30,7 +30,7 @@ afterAll(() => {
   server.close();
 });
 
-describe("/pages/index.ts", () => {
+describe("Cats", () => {
   it("should fetch and show cats", async () => {
     render(
       <SWRConfig value={{ dedupingInterval: 0 }}>
