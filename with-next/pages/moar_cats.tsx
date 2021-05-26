@@ -2,7 +2,7 @@ import { useCats } from "../hooks/useCats";
 
 const CatPage = () => {
   const { cats, isLoading, isError } = useCats(
-    "http://localhost:3000/api/cats"
+    "http://localhost:3000/api/moar_cats"
   );
 
   if (isError) {
